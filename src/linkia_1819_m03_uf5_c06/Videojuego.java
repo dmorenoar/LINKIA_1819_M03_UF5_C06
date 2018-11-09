@@ -16,6 +16,8 @@ public class Videojuego implements Serializable{
     private int precio;
     private String tipo;
 
+    public Videojuego() {} //Creo el constructor vacío para el XMLEncoder/XMLDecoder
+    
     public Videojuego(String titulo, int precio, String tipo) {
         this.titulo = titulo;
         this.precio = precio;

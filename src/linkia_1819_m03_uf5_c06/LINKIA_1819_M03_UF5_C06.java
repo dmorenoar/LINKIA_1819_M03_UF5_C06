@@ -49,20 +49,20 @@ public class LINKIA_1819_M03_UF5_C06 {
             }
 
             leerFichero(fichero);
-            
+
             String mensaje = "pepe 123456\n";
-            
+
             escribirFichero(fichero, mensaje);
-            
+
             leerFichero(fichero);
-  
+
         } catch (IOException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
 
         
         
-        /*LECTURA Y ESCRITURA DE OBJETOS CON SERIALIZACIÓN*/
+        //LECTURA Y ESCRITURA DE OBJETOS CON SERIALIZACIÓN
         
         Videojuego mario = new Videojuego("Super Mario Bross", 99, "Plataforma");
         Videojuego zelda = new Videojuego("The legend of Zelda", 150, "RPG");
@@ -103,40 +103,42 @@ public class LINKIA_1819_M03_UF5_C06 {
             System.out.println(v);
         }
         
-        /*LECTURA Y ESCRITURA CON XMLENCODER Y XMLDECODER*/
+        //LECTURA Y ESCRITURA CON XMLENCODER Y XMLDECODER
+        /*SOLUCIÓN DEL ERROR:  EL PROBLEMA ESTABA EN QUE LA CLASE VIDEOJUEGO
+        NO IMPLEMENTABA EL CONSTRUCTOR POR DEFECTO QUE NECESITA XMLENCODER
+        PARA TRABAJAR CON LA CLASE Y POR ESO SALÍA UN ERROR REFERENTE A LA CLASE
+        VIDEOJUEGO EN LAS EXCEPCIONES. LA SOLUCIÓN ES TAN FÁCIL CÓMO CREAR
+        EL CONSTRUCTOR public Videojuego(){} EN LA CLASE.*/
    
-        /*SOLUCIÓN DEL ERROR: */
-        
-        /*Guardamos información */
-        XMLEncoder xmlEn = new XMLEncoder(new FileOutputStream( new File("videojuegosXML.xml")));
-        
+        //Guardamos información
+        XMLEncoder xmlEn = new XMLEncoder(new FileOutputStream(new File("videojuegosXML.xml")));
+
         xmlEn.writeObject(lista);
         xmlEn.close();
-        
-        XMLDecoder xmlDe = new XMLDecoder(new BufferedInputStream( new FileInputStream("videojuegosXML.xml")));
-        
+
+        XMLDecoder xmlDe = new XMLDecoder(new BufferedInputStream(new FileInputStream("videojuegosXML.xml")));
+
         List<Videojuego> listaXML = (List<Videojuego>) xmlDe.readObject();
         xmlDe.close();
-        
-        for(Videojuego v : listaXML ){
+
+        for (Videojuego v : listaXML) {
             System.out.println(v);
         }
-        
+
     }
-    
-    public static void escribirFichero(File fichero, String mensaje) throws IOException{
-        FileWriter frWriter = new FileWriter(fichero, true); 
+
+    public static void escribirFichero(File fichero, String mensaje) throws IOException {
+        FileWriter frWriter = new FileWriter(fichero, true);
         frWriter.write(mensaje);
         frWriter.flush();
         frWriter.close();
     }
-    
-    
+
     /*
     Desc: Lee de un fichero y muestra por pantalla su contenido
     Input: Recibe el File del main
     Output: No requiere
-    */
+     */
     public static void leerFichero(File fichero) throws FileNotFoundException, IOException {
         String cadena = "";
 
@@ -149,7 +151,7 @@ public class LINKIA_1819_M03_UF5_C06 {
         while ((cadena = brFile.readLine()) != null) {
             System.out.println(cadena);
         }
-        
+
         brFile.close(); //Cerrar siempre después de finalizar la lectura
     }
 

@@ -1,3 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_144" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="linkia_1819_m03_uf5_c06.Videojuego">
+    <void property="precio">
+     <int>99</int>
+    </void>
+    <void property="tipo">
+     <string>Plataforma</string>
+    </void>
+    <void property="titulo">
+     <string>Super Mario Bross</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="linkia_1819_m03_uf5_c06.Videojuego">
+    <void property="precio">
+     <int>150</int>
+    </void>
+    <void property="tipo">
+     <string>RPG</string>
+    </void>
+    <void property="titulo">
+     <string>The legend of Zelda</string>
+    </void>
+   </object>
+  </void>
+ </object>
 </java>
